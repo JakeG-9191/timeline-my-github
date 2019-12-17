@@ -7,7 +7,7 @@ const request = require("request");
 app.use(express.json({ extended: false }));
 
 app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "./client/index.html"))
+    res.sendFile(path.join(__dirname, "./client/"))
 });
 
 app.get("/api/github/:username", (req, res) => {
