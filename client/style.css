@@ -1,0 +1,19 @@
+body {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+h2 {
+    color: black;
+}
+
+input {
+    width: 50%;
+    margin: 2rem;
+    text-align: center;
+}
+
+hr {
+    background-color: white;
+}

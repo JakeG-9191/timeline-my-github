@@ -7,22 +7,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Timeline My GitHub</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+        
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="jumbotron">
-        <form id="form">
-            <label>Enter GitHub Username</label>
-            <input type="text" placeholder="Enter Your GitHub Username" id="githubusername" />
-        </form>
-        <input class="button-primary" type="submit" value="Submit" id="submit">
+    <div class="container">
+        <div class="jumbotron">
+            <form id="form">
+                <h2>Enter GitHub Username Below</h2>
+                <input type="text" placeholder="Enter Your GitHub Username" id="githubusername" />
+            </form>
+            <input class="button-primary btn btn-dark" type="submit" value="Submit" id="submit">
+            <input class="button-primary btn btn-dark" type="submit" value="Search Again" id="search-again">
+        </div>
+
+        <div id="map-location">
+
+        </div>
     </div>
 
-    <div id="map-location">
 
-    </div>
 
     <!-- Linking momentjs -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
