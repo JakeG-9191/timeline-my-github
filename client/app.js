@@ -57,9 +57,9 @@ grabGithubRepo = () => {
                 let repoSars = repos[i].stargazers_count;
                 let repoWatch = repos[i].watchers_count;
                 let repoCreate = (moment(repos[i].created_at, "YYYY-MM-DD h:mm:ss").format("dddd, MMMM Do, h:mma"));
-                let repoDesc = repos[i].description;
+                let repoDesc = repos[i].description || "No Description Given";
 
-            let allRepoInfo = `<div class="all-repos"><h3><a target="_blank" href=${repoLink}>Repo Title: ${repoName}</a></h3><hr><p>Current Stars: ${repoSars}</p><p>Current Watchers: ${repoWatch}</p><p>Created On ${repoCreate}</p><p>Description: ${repoDesc}</p></div>`
+            let allRepoInfo = `<div class="all-repos"><h3><a target="_blank" href=${repoLink}>${repoName}</a></h3><hr><p>Current Stars: ${repoSars}</p><p>Current Watchers: ${repoWatch}</p><p>Created On ${repoCreate}</p><p>Description: ${repoDesc}</p></div>`
 
                 mapDiv.append(allRepoInfo)
             }
