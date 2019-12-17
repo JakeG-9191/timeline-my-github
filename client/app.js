@@ -1,47 +1,14 @@
-const express = require("express");
-const app = express();
-const path = require("path");
-const config = require("../config/default.json");
-const request = require("request");
-
-// app.use(express.json({ extended: false }));
-
-// app.get("/", function (req, res) {
-//     res.sendFile(path.join(__dirname, "./client/"))
-// });
-
-// app.get("/api/github/:username", (req, res) => {
-//     try {
-//         const options = {
-//             uri: `https://api.github.com/users/${req.params.username}/repos?per_page=5&sort=created:asc&client_id=${config.get("githubClientId")}&client_secret=${config.get("githubSecret")}`,
-//             method: "GET",
-//             headers: { "user-agent": "node.js" }
-//         };
-
-//         request(options, (error, response, body) => {
-//             if (error) console.error(error);
-//             if (response.statusCode !== 200) {
-//                 return res.status(404).json({ msg: "No Github Profile found with this username" });
-//             }
-//             res.json(JSON.parse(body));
-//         })
-//     } catch (err) {
-//         console.error(err.message);
-//         res.status(500).send("Server Error")
-//     }
-// });
-
 $("#submit").on("click", function (e) {
     e.preventDefault();
-
     grabGithubRepo();
 })
 
 grabGithubRepo = () => {
-
     let username = $("#githubusername").val().trim();
+    let client_id = config.client_id;
+    let client_secret = config.client_secret;
     
-    let gitHubURL = `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${config.get("githubClientId")}&client_secret=${config.get("githubSecret")}`
+    let gitHubURL = `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${client_id}&client_secret=${client_secret}`
 
     $.ajax({
         url: gitHubURL,
@@ -49,6 +16,24 @@ grabGithubRepo = () => {
     }).then(function (res) {
         let repos = res
         console.log(repos)
-    })
 
-}
+        let extraDiv = $("<div>")
+        let mapDiv = $("<div>");
+        mapDiv.addClass("mapDiv");
+        for (let i = 0; i < repos.length; i++) {
+            if (repos[i].private === false) {
+                let repoName = repos[i].name;
+                let repoSars = repos[i].stargazers_count;
+                let repoWatch = repos[i].watchers_count;
+                let repoCreate = (moment(repos[i].created_at, "YYYY-MM-DD h:mm:ss").format("dddd, MMMM Do, h:mma"));
+                let repoDesc = repos[i].description;
+
+                let allRepoInfo = `<h3>Repo Title: ${repoName}</h3><hr><p>Current Stars: ${repoSars}</p><p>Current Watchers: ${repoWatch}</p><p>Created On ${repoCreate}</p><p>Description: ${repoDesc}</p>`
+
+                mapDiv.append(allRepoInfo)
+            }
+        };
+        extraDiv.append(mapDiv);
+        $("#map-location").append(extraDiv)
+    })
+};
