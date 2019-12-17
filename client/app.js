@@ -28,9 +28,11 @@ newSearch = () => {
     let formShow = $("#form");
     let buttonShow = $("#submit");
     let buttonHide = $("#search-again");
+    let timelineHide = $("#timeline")
     formShow.show();
     buttonShow.show();
     buttonHide.hide();
+    timelineHide.empty();
 }
 
 grabGithubRepo = () => {
@@ -38,14 +40,14 @@ grabGithubRepo = () => {
     let client_id = config.client_id;
     let client_secret = config.client_secret;
     
-    let gitHubURL = `https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${client_id}&client_secret=${client_secret}`
+    let gitHubURL = `https://api.github.com/users/${username}/repos?per_page=20&sort=created:asc&client_id=${client_id}&client_secret=${client_secret}`
 
     $.ajax({
         url: gitHubURL,
         method: "GET",
     }).then(function (res) {
         let repos = res
-        console.log(repos.length)
+        console.log(repos)
 
         let extraDiv = $("<div>");
         let mapDiv = $("<div>");
@@ -63,7 +65,7 @@ grabGithubRepo = () => {
 
             mapDiv.append(allRepoInfo)
             
-            lineTime = $(`<div class='line'><p>${repoCreate}</p>`)
+            lineTime = $(`<div class='line'><h4>${repoCreate}</h4>`)
             }
             $("#timeline").append(lineTime)
         };

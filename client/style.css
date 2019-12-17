@@ -21,14 +21,14 @@ hr {
 #timeline {
     background-image: linear-gradient(black, blue, blue, blue, black);
     width: 10%;
-    margin-left: 45%;
+    margin-left: 55%;
     height: 99%;
     z-index: 5;
     position: relative;
 }
 
 .all-repos {
-    background: white;
+    background-color: #e9ecef;
     color: black;
     border-radius: 18px;
     border-width: 3px;
@@ -37,6 +37,7 @@ hr {
     margin-bottom: 1rem;
     z-index: 10;
     position: relative;
+    padding: 1rem;
 }
 
 .jumbotron {
@@ -48,8 +49,8 @@ hr {
     margin-left: -500%;
     margin-right: 100%;
     background-image: linear-gradient(to left, black, blue, black);
-    margin-bottom: 13rem;
-    margin-top: 6rem;
+    margin-bottom: 10rem;
+    margin-top: 8rem;
     position: relative;
     z-index: 1;
 }
