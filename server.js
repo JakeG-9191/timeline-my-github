@@ -23,7 +23,6 @@ app.get("/api/github/:username", (req, res) => {
             if (response.statusCode !== 200) {
                 return res.status(404).json({ msg: "No Github Profile found with this username" });
             }
-
             res.json(JSON.parse(body));
         })
     } catch (err) {
