@@ -1,7 +1,28 @@
 $("#submit").on("click", function (e) {
     e.preventDefault();
+    hideForm();
     grabGithubRepo();
+});
+
+$("#seach-again").on("click", function (e){
+    e.preventDefault();
+    newSearch();
+    $("#map-location").empty();
 })
+
+hideForm = () => {
+    let formHide = $("#form");
+    let buttonHide = $("#submit");
+    formHide.hide();
+    buttonHide.hide();
+};
+
+newSearch = () => {
+    let formShow = $("#form");
+    let buttonShow = $("#submit");
+    formShow.show();
+    buttonShow.show();
+}
 
 grabGithubRepo = () => {
     let username = $("#githubusername").val().trim();
@@ -17,7 +38,7 @@ grabGithubRepo = () => {
         let repos = res
         console.log(repos)
 
-        let extraDiv = $("<div>")
+        let extraDiv = $("<div>");
         let mapDiv = $("<div>");
         mapDiv.addClass("mapDiv");
         for (let i = 0; i < repos.length; i++) {
